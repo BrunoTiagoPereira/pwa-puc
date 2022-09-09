@@ -9,7 +9,7 @@
                           width=device-width, initial-scale=1.0, 
                           minimum-scale=1.0, maximum-scale=1.0, 
                           user-scalable=no, target-densitydpi=device-dpi">
-    <!-- <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" /> -->
+    <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" />
     <link rel="icon" type="image/png" href="./icons/favicon.ico" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
@@ -35,8 +35,11 @@
 
 <body>
     <nav class="navbar bg-dark flex align-center justify-start">
-        <div id="back-button" class="hidden">
+        <div id="add-back-button" class="hidden">
             <i  class="fa-solid fa-arrow-left icon "></i>
+        </div>
+        <div id="update-back-button" class="hidden">
+            <i class="fa-solid fa-arrow-left icon "></i>
         </div>
         
         <h2 id="nav-header"></h2>
@@ -84,6 +87,37 @@
             <div class="button-group-container">
                 <button id="add-page-cancel-button" class="button button-danger-scheme">Cancel</button>
                 <button id="add-page-save-button" class="button button-save-scheme">Save</button>
+            </div>
+        </section>
+
+        <section id="update-page" class="hidden">
+        
+            <input id="update-input-id" type="text" class="hidden">
+            <div class="input-container">
+                <div class="input-label-container">
+                    <label for="update-input-name">Nome do Prato</label>
+                    <span class="required">*</span>
+                </div>
+                <input type="text" id="update-input-name" class="input">
+            </div>
+        
+            <div class="input-container">
+                <div class="input-label-container">
+                    <label for="update-input-description">Descrição do Prato</label>
+                </div>
+                <input type="text" id="update-input-description" class="input"/>
+            </div>
+        
+            <div class="input-checkbox-container">
+                <div class="input-label-container">
+                    <label for="update-input-is-favorite">É favorito?</label>
+                </div>
+                <input type="checkbox" id="update-input-is-favorite" class="input">
+            </div>
+        
+            <div class="button-group-container">
+                <button id="update-page-cancel-button" class="button button-danger-scheme">Cancel</button>
+                <button id="update-page-save-button" class="button button-save-scheme">Save</button>
             </div>
         </section>
     </div>

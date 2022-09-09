@@ -6,7 +6,7 @@ onload = () => {
     // Busca o elemento pelo Id
     byId = (id) => document.getElementById(id);
     // Elementos utilizados
-    const backButton = byId('back-button');
+    
     const floatingButton = byId('floating-button');
     const navHeader = byId('nav-header');
     const errorMessagesContainer = byId('error-message-container');
@@ -16,6 +16,7 @@ onload = () => {
     const searchInput = byId('search-input');
     const platesList = byId('plates-list');
 
+    const addBackButton = byId('add-back-button');
     const addPageContainer = byId('add-page');
     const addPageNameInput = byId('add-input-name');
     const addPageDescriptionInput = byId('add-input-description');
@@ -23,9 +24,22 @@ onload = () => {
     const addPageCancelButton = byId('add-page-cancel-button');
     const addPageSaveButton = byId('add-page-save-button');
 
+    const updateBackButton = byId('update-back-button');
+    const updatePageContainer = byId('update-page');
+    const updatePageIdInput = byId('update-input-id');
+    const updatePageNameInput = byId('update-input-name');
+    const updatePageDescriptionInput = byId('update-input-description');
+    const updatePageIsFavoriteInput = byId('update-input-is-favorite');
+    const updatePageCancelButton = byId('update-page-cancel-button');
+    const updatePageSaveButton = byId('update-page-save-button');
+
 
     // Eventos
-    backButton.onclick = () => {
+    addBackButton.onclick = () => {
+       loadHomeScreen();
+    }
+
+    updateBackButton.onclick = () => {
        loadHomeScreen();
     }
     floatingButton.onclick = () => {
@@ -38,9 +52,15 @@ onload = () => {
         
     }
 
+    updatePageCancelButton.onclick = () => {
+       
+        loadHomeScreen();
+        
+    }
+
     addPageSaveButton.onclick = () => {
         // Valida o nome do prato e verifica se deve mostrar erros
-        const {hasError, errorMessages} = validateAddInputs();
+        const {hasError, errorMessages} = validateInput(addPageNameInput.value);
 
         if(hasError){
             showErrorMessages(errorMessages);
@@ -57,6 +77,35 @@ onload = () => {
         }
         
         const data = getOrCreateData();
+
+        data.push(plate);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    
+        clearErrorMessages();
+         
+        loadHomeScreen();
+        
+    }
+
+    updatePageSaveButton.onclick = () => {
+        // Valida o nome do prato e verifica se deve mostrar erros
+        const {hasError, errorMessages} = validateInput(updatePageNameInput.value)
+
+        if(hasError){
+            showErrorMessages(errorMessages);
+            return;
+        }
+
+        const id = parseInt(updatePageIdInput.value);
+        // Caso esteja tudo correto, cria o prato e atualiza a tela
+        const plate = {
+            id: id,
+            name: updatePageNameInput.value,
+            description: updatePageDescriptionInput.value,
+            isFavorite: updatePageIsFavoriteInput.checked,
+        }
+        
+        const data = _.filter(getOrCreateData(), (p) => p.id !== id);
 
         data.push(plate);
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -86,10 +135,27 @@ onload = () => {
 
     // Carrega a tela de adicionar em branco
     loadAddScreen = () => {
-        backButton.classList.remove('hidden')
+        addBackButton.classList.remove('hidden')
         floatingButton.classList.add('hidden');
         setHeader('Adicionar Prato')
         addPageContainer.classList.remove('hidden');
+        homePageContainer.classList.add('hidden');
+    }
+
+    // Carrega a tela de atualizar com os dados do prato
+    loadUpdateScreen = (id) => {
+        const data = getOrCreateData();
+        const plate = _.find(data, {'id': parseInt(id)});
+
+        updatePageIdInput.value = plate.id;
+        updatePageNameInput.value = plate.name;
+        updatePageDescriptionInput.value = plate.description;
+        updatePageIsFavoriteInput.checked = plate.isFavorite;
+
+        updateBackButton.classList.remove('hidden')
+        floatingButton.classList.add('hidden');
+        setHeader('Atualizar Prato')
+        updatePageContainer.classList.remove('hidden');
         homePageContainer.classList.add('hidden');
     }
 
@@ -98,14 +164,16 @@ onload = () => {
 
         
        errorMessagesContainer.classList.add('hidden');
-       backButton.classList.add('hidden')
+       addBackButton.classList.add('hidden')
+       updateBackButton.classList.add('hidden')
        floatingButton.classList.remove('hidden');
        setHeader('Pratos')
        addPageContainer.classList.add('hidden');
-
        addPageNameInput.value = '';
        addPageDescriptionInput.value = '';
        addPageIsFavoriteInput.checked = 0;
+
+       updatePageContainer.classList.add('hidden');
 
        homePageContainer.classList.remove('hidden');
 
@@ -120,8 +188,8 @@ onload = () => {
     }
 
     // Verifica se o nome informado pelo usuário é válido
-    validateAddInputs = () => {
-        const name = addPageNameInput.value;
+    validateInput = (inputValue) => {
+        const name = inputValue;
 
         const errorMessages = [];
 
@@ -207,24 +275,36 @@ onload = () => {
             const favoriteIconEl = document.createElement('i');
             favoriteIconEl.className = 'fa-solid fa-heart icon';
 
+            const updateIconContainer = document.createElement('div');
+            updateIconContainer.className = 'update-icon-container';
+            updateIconContainer.onclick = () => loadUpdateScreen(plate.id);
+
+            const updateIconEl = document.createElement('i');
+            updateIconEl.className = 'fa-solid fa-pencil icon yellow';
+
             const removeIconContainer = document.createElement('div');
             removeIconContainer.className = 'remove-icon-container';
             removeIconContainer.onclick = () => removeItem(plate.id);
 
             const removeIconEl = document.createElement('i');
             removeIconEl.className = 'fa-solid fa-trash icon red';
+            
 
             const hr = document.createElement('hr');
 
             plateInfoContainer.appendChild(plateNameEl);
             plateInfoContainer.appendChild(plateDescriptionEl);
 
+            updateIconContainer.appendChild(updateIconEl);
             removeIconContainer.appendChild(removeIconEl);
+
+          
 
             if(plate.isFavorite){
                 iconsContainerEl.appendChild(favoriteIconEl)
             }
-         
+
+            iconsContainerEl.appendChild(updateIconContainer)
             iconsContainerEl.appendChild(removeIconContainer)
 
             plateEl.appendChild(plateInfoContainer);
