@@ -3,10 +3,11 @@ FavoritePlates
 # Nome
 Bruno Tiago pereira
 # Descrição 
-A aplicação tem a função de cadastrar pratos e filtrá-los logo após. É possível adicionar pratos como favoritos, assim ficam marcados com um ícone de coração.
+A aplicação tem a função de cadastrar pratos favoritos e filtrá-los logo após. É possível adicionar pratos como favoritos, assim ficam marcados com um ícone de coração.
 # Descrição de cada página ou tela
-A primeira tela tem uma listagem dos pratos cadastrados e um campo em que pode ser filtrado os pratos por nome.
-Na segunda tela é possível fazer o cadastro de um novo prato informando o nome, que é obrigatório, descrição e se é um prato favorito.
+A primeira tela tem uma listagem dos pratos cadastrados e um campo em que pode ser filtrado os pratos por nome. <br />
+Na segunda tela é possível fazer o cadastro de um novo prato informando o nome, que é obrigatório, descrição e se é um prato favorito. <br />
+Na terceira tela é possível fazer a atualização de um prato informando o nome, que é obrigatório, descrição e se é um prato favorito.
 # Explicação dos dados
 A lista contém objetos de pratos com o seguinte formato:
 ```json
