@@ -18,12 +18,12 @@ A lista contém objetos de pratos com o seguinte formato:
 }
 ```
 # Respostas
-A aplicação é original e não uma cópia da aplicação de um colega ou de uma aplicação já existente? Sim
-A aplicação tem pelo menos duas interfaces (telas ou páginas) independentes? Sim
-A aplicação armazena e usa de forma relevante dados complexos (mais de um atributo)? Sim
-A aplicação possui um manifesto para instalação no dispositivo do usuário? Sim
-A aplicação possui um service worker que permite o funcionamento off-line? Sim
-O código da minha aplicação possui comentários explicando cada operação? Sim
-A aplicação está funcionando corretamente? Sim
-A aplicação está completa? Sim
+A aplicação é original e não uma cópia da aplicação de um colega ou de uma aplicação já existente? Sim <br />
+A aplicação tem pelo menos duas interfaces (telas ou páginas) independentes? Sim <br />
+A aplicação armazena e usa de forma relevante dados complexos (mais de um atributo)? Sim <br />
+A aplicação possui um manifesto para instalação no dispositivo do usuário? Sim <br />
+A aplicação possui um service worker que permite o funcionamento off-line? Sim <br />
+O código da minha aplicação possui comentários explicando cada operação? Sim <br />
+A aplicação está funcionando corretamente? Sim <br />
+A aplicação está completa? Sim <br />
 
