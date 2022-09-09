@@ -1,7 +1,7 @@
 # Nome da aplicação
 FavoritePlates
 # Nome
-Bruno Tiago pereira
+Bruno Tiago Pereira
 # Descrição 
 A aplicação tem a função de cadastrar pratos favoritos e filtrá-los logo após. É possível adicionar pratos como favoritos, assim ficam marcados com um ícone de coração.
 # Descrição de cada página ou tela
