@@ -5,8 +5,8 @@ onload = () => {
 
     // Busca o elemento pelo Id
     byId = (id) => document.getElementById(id);
-    // Elementos utilizados
     
+    // Elementos utilizados
     const floatingButton = byId('floating-button');
     const navHeader = byId('nav-header');
     const errorMessagesContainer = byId('error-message-container');
@@ -47,15 +47,11 @@ onload = () => {
     }
 
     addPageCancelButton.onclick = () => {
-       
         loadHomeScreen();
-        
     }
 
     updatePageCancelButton.onclick = () => {
-       
         loadHomeScreen();
-        
     }
 
     addPageSaveButton.onclick = () => {
@@ -68,7 +64,6 @@ onload = () => {
         }
 
         // Caso esteja tudo correto, cria o prato e atualiza a tela
-        
         const plate = {
             id: getNextId(),
             name: addPageNameInput.value,
@@ -97,7 +92,7 @@ onload = () => {
         }
 
         const id = parseInt(updatePageIdInput.value);
-        // Caso esteja tudo correto, cria o prato e atualiza a tela
+        // Caso esteja tudo correto, atualiza o prato e a tela
         const plate = {
             id: id,
             name: updatePageNameInput.value,
