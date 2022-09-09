@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Pratos Favoritos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="minimum-scale=1">
+    <meta name="viewport" content="height=device-height, 
+                          width=device-width, initial-scale=1.0, 
+                          minimum-scale=1.0, maximum-scale=1.0, 
+                          user-scalable=no, target-densitydpi=device-dpi">
+    <!-- <link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials" /> -->
+    <link rel="icon" type="image/png" href="./icons/favicon.ico" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Pratos Favoritos" />
+    <link rel="apple-touch-icon" sizes="57x57" href="./icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-icon-180x180.png">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./resources/all.min.css"  />
+    <script src="./resources/lodash.min.js"></script>
+    <script src="./resources/all.min.js"></script>
+    <script src="./index.js"></script>
+    
+    
+
+</head>
+
+<body>
+    <nav class="navbar bg-dark flex align-center justify-start">
+        <div id="back-button" class="hidden">
+            <i  class="fa-solid fa-arrow-left icon "></i>
+        </div>
+        
+        <h2 id="nav-header"></h2>
+    </nav>
+
+    <div class="content">
+        <div id="error-message-container" class="hidden">
+            <div id="error-message-content-container">
+            </div>
+        </div>
+        <section id="home-page">
+           <div class="search-input-container">
+            <input type="text" id="search-input" class="input" placeholder="Pesquisar nome do prato">
+           </div>
+           <h3 class="header-title">Seus Pratos</h3>
+           <div id="plates-list">
+
+           </div>
+        </section>
+
+        <section id="add-page" class="hidden">
+                    
+            <div class="input-container">
+                <div class="input-label-container">
+                    <label for="add-input-name">Nome do Prato</label>
+                    <span class="required">*</span>
+                </div>
+                <input type="text" id="add-input-name" class="input" placeholder="Feijoada">
+            </div>
+            
+            <div class="input-container">
+                <div class="input-label-container">
+                    <label for="add-input-description">Descrição do Prato</label>
+                </div>
+                <input type="text" id="add-input-description" class="input" placeholder="Um prato da culinária mineira" />
+            </div>
+            
+            <div class="input-checkbox-container">
+                <div class="input-label-container">
+                    <label for="add-input-is-favorite">É favorito?</label>
+                </div>
+                <input type="checkbox" id="add-input-is-favorite" class="input">
+            </div>
+            
+            <div class="button-group-container">
+                <button id="add-page-cancel-button" class="button button-danger-scheme">Cancel</button>
+                <button id="add-page-save-button" class="button button-save-scheme">Save</button>
+            </div>
+        </section>
+    </div>
+
+  
+    <button id="floating-button">
+        <i class="icon fa-solid fa-plus"></i>
+    </button>
+</body>
+
+</html>
